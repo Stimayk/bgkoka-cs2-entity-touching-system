@@ -59,8 +59,7 @@ public partial class EntitySubSystemBase
 
     private HookResult OnRoundEnd(EventRoundEnd @event, GameEventInfo info)
     {
-
-        ClearAllManagedEntities();
+        AddTimer(ConVar.Find("mp_round_restart_delay").GetPrimitiveValue<float>(), ClearAllManagedEntities);
         return HookResult.Continue;
     }
 
